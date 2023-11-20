@@ -35,6 +35,29 @@ typedef struct {
 
 在上述代码中，pthread_mutex_t 结构体被用于实现条件变量，结合了条件变量 pthread_cond_t 来实现线程的同步和互斥。通过 pthread_mutex_lock 和 pthread_mutex_unlock 操作，可以在关键代码段（临界区）加锁，确保同一时刻只有一个线程可以执行该段代码，从而保护共享资源的完整性。
 
+### pthread_mutex_lock()：
+是 POSIX 线程库中用于锁定互斥量（Mutex）的函数。互斥量是一种用于控制多个线程对共享资源访问的同步机制。互斥量的目的是防止多个线程同时访问共享资源，从而避免数据竞争和不确定的行为。
+```
+#include <pthread.h>
+int pthread_mutex_lock(pthread_mutex_t *mutex);
+```
+mutex：指向互斥量对象的指针。
+
+pthread_mutex_lock() 函数的作用是锁定互斥量，如果互斥量已经被其他线程锁定，调用线程将被阻塞，直到互斥量可用。如果互斥量当前没有被锁定，调用线程将成功锁定互斥量，并可以继续执行临界区代码。
+
+使用互斥量的目的是确保在任意时刻只有一个线程可以访问共享资源，以避免并发访问导致的问题。
+
+### pthread_mutex_unlock()： 
+是 POSIX 线程库中用于释放互斥锁（Mutex）的函数。在多线程编程中，互斥锁用于保护共享资源，确保在任何时刻只有一个线程能够访问这些资源，从而防止数据竞争和一致性问题。
+```
+int pthread_mutex_unlock(pthread_mutex_t *mutex);
+
+```
+mutex: 一个指向互斥锁对象的指针。
+
+pthread_mutex_unlock() 函数用于解锁已经被线程锁定的互斥锁。如果当前线程拥有这个互斥锁，那么该锁就会被释放。如果当前线程没有锁定这个互斥锁，pthread_mutex_unlock() 的行为是未定义的。
+
+
 # pthread_cond_t 结构体：
 ```
 typedef struct {
