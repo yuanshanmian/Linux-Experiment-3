@@ -1,3 +1,13 @@
+### pthread_join()：
+```
+int pthread_join(pthread_t thread, void **retval);
+```
+thread: 要等待的线程的标识符，即由 pthread_create 返回的 pthread_t 类型的标识符。
+
+retval: 用于存储被等待线程的返回值的指针，如果不关心返回值，可以传递 NULL。
+
+pthread_join 函数会将调用线程（通常是主线程）阻塞，直到指定的线程（通过 thread 参数指定）终止。一旦被等待的线程终止，pthread_join 将返回，并且如果提供了 retval 参数，将把被等待线程的返回值存储在 retval 指向的地址中。
+
 ## pthread_create()：
 ```
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
