@@ -7,6 +7,7 @@
 #include <time.h>
 #include <pthread.h>
 
+// 通过 condition_t 结构体封装了互斥锁 pthread_mutex_t 和条件变量 pthread_cond_t。这种结构体的组合常见于多线程编程中，用于实现复杂的同步机制，确保多个线程能够正确地协同工作。
 typedef struct condition
 {
     pthread_mutex_t pmutex;
