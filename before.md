@@ -1,3 +1,13 @@
+## pthread_create()：
+```
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
+                   void *(*start_routine)(void *), void *arg);
+```
+thread: 用于存储新创建线程的标识符的指针，即 pthread_t 类型的变量的地址。
+attr: 用于设置线程属性的参数，通常为 NULL，表示使用默认属性。
+start_routine: 是一个指向线程主函数的指针，该函数的参数和返回值都是 void* 类型。这个主函数是新线程启动时将要执行的函数。
+arg: 是传递给 start_routine 函数的参数。
+
 # pthread_mutex_t 结构体：
 ```
 typedef struct {
