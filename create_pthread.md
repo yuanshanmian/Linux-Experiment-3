@@ -28,7 +28,7 @@ int main(int argc, const char *argv[])
 {
     int i = 0;
     int ret = 0;
-    pthread_t id1, id2;
+    pthread_t id1, id2;  // pthread_t一般是一个足够大的整数类型
 
     // 创建线程1
     ret = pthread_create(&id1, NULL, (void *)mythread1, NULL);
