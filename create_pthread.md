@@ -1,3 +1,4 @@
+```
 #include <stdio.h>
 #include <pthread.h>
 
@@ -48,6 +49,7 @@ int main(int argc, const char *argv[])
     // 等待线程1和线程2结束
     pthread_join(id1, NULL);
     pthread_join(id2, NULL);
+```
 
     return 0;
 }
