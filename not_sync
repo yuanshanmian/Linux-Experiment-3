@@ -1,0 +1,37 @@
+```
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<pthread.h>
+
+#define LEN 100000
+
+int num = 0;
+
+void* thread_func(void* arg) {
+    for (int i = 0; i < LEN; ++i) {
+        num += 1;
+    }
+    return NULL;
+}
+
+int main() {
+    pthread_t tid1, tid2;
+
+    // 创建两个线程，它们将同时执行 thread_func 函数
+    pthread_create(&tid1, NULL, (void*)thread_func, NULL);
+    pthread_create(&tid2, NULL, (void*)thread_func, NULL);
+
+    // 等待线程执行完成
+    pthread_join(tid1, NULL);
+    pthread_join(tid2, NULL);
+
+    // 打印结果，由于没有进行线程同步，可能会出现错误的结果
+    printf("correct result=%d, wrong result=%d.\n", 2 * LEN, num);
+
+    return 0;
+}
+
+```
+运行结果：correct result=200000, wrong result=106860.
