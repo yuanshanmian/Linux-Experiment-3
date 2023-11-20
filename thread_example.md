@@ -8,7 +8,7 @@
 #define MAX 20
 
 pthread_t thread[2];  // 两个线程
-pthread_mutex_t mut;
+pthread_mutex_t mut;  // 创建一个互斥锁
 int number = 0;
 int i;
 
